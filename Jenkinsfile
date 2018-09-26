@@ -13,5 +13,13 @@ pipeline {
 '''
       }
     }
+    stage('Staging') {
+      steps {
+        sh '''
+
+
+docker run -d -p 80:80 -v .:/var/www/html dockerfile/nginx'''
+      }
+    }
   }
 }
