@@ -16,10 +16,11 @@ pipeline {
     }
     stage('Staging') {
       steps {
+        sh 'cp $WORKSPACE staging-files/'
         sh '''
 
 
-docker run -d -p 8000:80 -v $WORKSPACE:/usr/share/nginx/html/ nginx'''
+docker run -d -p 8000:80 -v staging-files:/usr/share/nginx/html/ nginx'''
       }
     }
   }
