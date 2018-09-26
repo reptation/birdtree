@@ -17,6 +17,7 @@ pipeline {
     stage('Staging') {
       steps {
         sh 'cp -r $WORKSPACE/*.html staging-files/'
+        sh 'ls staging-files'
         sh '''
 
 
