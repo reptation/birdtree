@@ -11,6 +11,7 @@ pipeline {
 
 
 '''
+        sh 'ls $WORKSPACE'
       }
     }
     stage('Staging') {
