@@ -29,7 +29,7 @@ pipeline {
         sh 'mkdir -p /var/www/thebirdtree.com'
         sh 'cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
         sh 'cp -r $WORKSPACE/*.html staging-files/'
-        sh 'ls staging-files'
+        sh 'ls /var/www/thebirdtree.com'
       }
     }
   }
