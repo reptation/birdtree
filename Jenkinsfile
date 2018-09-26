@@ -1,13 +1,14 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
-      agent any
+      agent {
+        docker {
+          image 'nginx'
+          args '-p 8000:80 -d '
+        }
+
+      }
       environment {
         GITNAME = 'reptation'
       }
