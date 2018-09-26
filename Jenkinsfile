@@ -6,9 +6,11 @@ pipeline {
         GITNAME = 'reptation'
       }
       steps {
-        sh '''ls $WORKSPACE
+        sh '''echo $GITNAME
 
-; echo $GITNAME'''
+
+
+'''
       }
     }
   }
