@@ -22,6 +22,7 @@ pipeline {
 
 
 docker run -d -p 8000:80 -v staging-files:/usr/share/nginx/html/ nginx'''
+        sh 'ls /usr/share/nginx/html/'
       }
     }
   }
