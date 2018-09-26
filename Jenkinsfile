@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Staging') {
       steps {
-        sh 'docker run -d -p 8000:80 --name nginx-test '
+        sh 'docker run p 8000:80 --name nginx-test'
         sh 'mkdir -p server-config'
         sh 'mkdir -p /var/www/thebirdtree.com'
         sh 'cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
