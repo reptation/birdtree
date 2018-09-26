@@ -18,7 +18,7 @@ pipeline {
         sh '''
 
 
-docker run -d -p 8000:80 -v $WORKSPACE:/var/www/html nginx'''
+docker run -d -p 8000:8000 -v $WORKSPACE:/var/www/html nginx'''
       }
     }
   }
