@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'curl http://127.0.0.1:8000/'
+        sh 'curl http://127.0.0.1/'
         sh '#mkdir -p server-config'
         sh '#mkdir -p /var/www/thebirdtree.com'
         sh '#cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
