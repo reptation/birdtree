@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       agent any
@@ -20,15 +15,17 @@ pipeline {
         sh 'ls $WORKSPACE'
         sh 'mkdir -p /var/www/thebirdtree.com'
         sh 'cp "$WORKSPACE"/*.html /var/www/thebirdtree.com'
+        sh 'docker build -t nginx-test-img .'
+        sh 'docker run --name nginx-test -d -p 8000:80 nginx-test-img'
       }
     }
     stage('Staging') {
       steps {
-        sh 'ls $WORKSPACE/'
-        sh 'mkdir -p server-config'
-        sh 'mkdir -p /var/www/thebirdtree.com'
-        sh 'cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
-        sh 'cp -r $WORKSPACE/*.html staging-files/'
+        sh '#docker run -p 8000:80 --name nginx-test -d nginx'
+        sh '#mkdir -p server-config'
+        sh '#mkdir -p /var/www/thebirdtree.com'
+        sh '#cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
+        sh '#cp -r $WORKSPACE/*.html staging-files/'
         sh 'ls /var/www/thebirdtree.com'
       }
     }
