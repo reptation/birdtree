@@ -19,9 +19,9 @@ pipeline {
         sh 'docker run --name nginx-test -d -p 8000:80 nginx-test-img'
       }
     }
-    stage('Staging') {
+    stage('Test') {
       steps {
-        sh '#docker run -p 8000:80 --name nginx-test -d nginx'
+        sh 'curl http://127.0.0.1:8000/'
         sh '#mkdir -p server-config'
         sh '#mkdir -p /var/www/thebirdtree.com'
         sh '#cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
