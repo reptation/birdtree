@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Test') {
       agent any
       environment {
         GITNAME = 'reptation'
@@ -14,20 +14,6 @@ pipeline {
 
 '''
         sh 'ls $WORKSPACE'
-        sh 'mkdir -p /var/www/thebirdtree.com'
-        sh 'cp "$WORKSPACE"/*.html /var/www/thebirdtree.com'
-        sh 'docker build -t nginx-test-img .'
-        sh 'docker run --name nginx-test -d -p 8000:80 nginx-test-img'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh 'curl http://172.17.0.3'
-        sh '#mkdir -p server-config'
-        sh '#mkdir -p /var/www/thebirdtree.com'
-        sh '#cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
-        sh '#cp -r $WORKSPACE/*.html staging-files/'
-        sh 'ls /var/www/thebirdtree.com'
       }
     }
     stage('Deploy') {
