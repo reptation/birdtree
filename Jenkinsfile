@@ -7,12 +7,7 @@ pipeline {
         GITNAME = 'reptation'
       }
       steps {
-        sh '''echo $GITNAME
-
-
-
-
-'''
+        sh 'echo "hello jenkinsworker" > ~/hello-remote'
         sh 'ls $WORKSPACE'
       }
     }
