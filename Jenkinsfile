@@ -17,6 +17,12 @@ pipeline {
       }
     }
     stage('Deploy') {
+      agent {
+        node {
+          label 'web'
+        }
+
+      }
       steps {
         sh 'cp -r $WORKSPACE/* /var/www/classic.birdtree.us/'
       }
