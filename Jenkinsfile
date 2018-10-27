@@ -11,6 +11,7 @@ pipeline {
 
 
 
+
 '''
         sh 'ls $WORKSPACE'
         sh 'mkdir -p /var/www/thebirdtree.com'
@@ -27,6 +28,11 @@ pipeline {
         sh '#cp "$WORKSPACE"/thebirdtree.com.conf server-config/'
         sh '#cp -r $WORKSPACE/*.html staging-files/'
         sh 'ls /var/www/thebirdtree.com'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'cp -r $WORKSPACE/* /var/www/classic.birdtree.us/'
       }
     }
   }
